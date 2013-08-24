@@ -1,0 +1,51 @@
+﻿@model MealMaster.Models.IngredientModel
+
+@{
+    ViewBag.Title = "CreateEditIngredient";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Ny ingrediens</h2>
+
+
+
+<form action="CreateEditIngredient.cshtml">
+  <div class="x-container">
+    <div class="x-formrow">
+        <label>Navn:</label>
+        <input name="Name" type="text" class="x-text-box"/>
+    </div>
+    <div class="x-formrow">
+        <label>Beskrivelse:</label>
+        <textarea name="Description" class="x-text-area"></textarea>
+    </div>
+    <div class="x-formrow">
+        <label>Energiindhold:</label>
+        <input name="EnergyInKcal" type="text" class="x-text-box"/>
+        kcal
+    </div>
+    <div class="x-formrow">
+        <label>Kulhydrat:</label>
+        <input name="CarbonHydrateWeightPercent" type="text" class="x-text-box"/>
+        %
+    </div>
+    <div class="x-formrow">
+        <label>Fedt:</label>
+        <input name="FatWeightPercent" type="text" class="x-text-box"/>
+                %
+    </div>
+    <div class="x-formrow">
+        <label>Protein:</label>
+        <input name="ProteineWeightPercent" type="text" class="x-text-box"/>
+                %
+    </div>
+    <div class="x-formrow">
+        <label>Alkohol:</label>
+        <input name="AlcoholVolumePercent" type="text" class="x-text-box"/>
+        %
+    </div>
+    <div>
+        <input type="submit" formaction="CreateIngredient" value="Gem ingrediens" class="x-submit"/>
+    </div>
+  </div>
+</form>
