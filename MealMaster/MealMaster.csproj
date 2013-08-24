@@ -41,6 +41,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Castle.Core">
+      <HintPath>..\packages\Castle.Core.3.2.0\lib\net45\Castle.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Castle.Windsor">
+      <HintPath>..\packages\Castle.Windsor.3.2.1\lib\net45\Castle.Windsor.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -188,14 +194,18 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="App_Start\WindsorControllerConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\IngredientsController.cs" />
     <Compile Include="Controllers\RecipesController.cs" />
+    <Compile Include="Factories\WindsorControllerFactory.cs" />
+    <Compile Include="Factories\WindsorHttpControllerFactory.cs" />
     <Compile Include="Filters\InitializeSimpleMembershipAttribute.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Installers\ContainerInstaller.cs" />
     <Compile Include="Models\AccountModels.cs" />
     <Compile Include="Models\IngredientModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -325,6 +335,16 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\MealMaster.Core\MealMaster.Core.csproj">
+      <Project>{372F0BA7-689E-4A41-B861-328AA22234E4}</Project>
+      <Name>MealMaster.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MealMaster.Infrastructure\MealMaster.Infrastructure.csproj">
+      <Project>{707F2B90-1028-457A-B07D-28478BF2362F}</Project>
+      <Name>MealMaster.Infrastructure</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

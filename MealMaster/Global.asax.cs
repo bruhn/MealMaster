@@ -6,6 +6,7 @@ using System.Web.Http;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
+using MealMaster.App_Start;
 
 namespace MealMaster
 {
@@ -23,8 +24,14 @@ namespace MealMaster
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
             AuthConfig.RegisterAuth();
+            WindsorControllerConfig.BootstrapContainer();
             //BootstrapSupport.BootstrapBundleConfig.RegisterBundles(System.Web.Optimization.BundleTable.Bundles);
             //BootstrapMvcSample.ExampleLayoutsRouteConfig.RegisterRoutes(RouteTable.Routes);
+        }
+
+        protected void Application_End()
+        {
+            WindsorControllerConfig.DisposeContainer();
         }
     }
 }
