@@ -10,17 +10,21 @@ namespace MealMaster.Controllers
         //
         // GET: /Ingredients/
 
-        private readonly IIngredientService _ingriIngredientService;
+        private readonly IIngredientService _ingredientService;
+        private readonly IIngredientListFactory _ingredientListFactory;
 
 
-        public IngredientsController(IIngredientService ingredientService)
+        public IngredientsController(IIngredientService ingredientService, IIngredientListFactory ingredientListFactory)
         {
-            _ingriIngredientService = ingredientService;
+            _ingredientService = ingredientService;
+            _ingredientListFactory = ingredientListFactory;
         }
 
         public ActionResult IngredientsList()
         {
-            return View();
+            var ingredientList = _ingredientListFactory.CreateIngredientListModel();
+            
+            return View(ingredientList);
         }
 
         public ActionResult CreateEditIngredient()
@@ -28,7 +32,7 @@ namespace MealMaster.Controllers
             return View();
         }
 
-        public void CreateIngredient(IngredientModel ingredient)
+        public ActionResult CreateIngredient(IngredientModel ingredient)
         {
             var ingredientDto = new IngredientDto
             {
@@ -41,7 +45,11 @@ namespace MealMaster.Controllers
                 AlcoholVolumePercent = ingredient.AlcoholVolumePercent
             };
 
-            _ingriIngredientService.CreateIngredient(ingredientDto);
+            _ingredientService.CreateIngredient(ingredientDto);
+
+            var ingredientList = _ingredientListFactory.CreateIngredientListModel();
+
+            return View("IngredientsList", ingredientList);
         }
     }
 }

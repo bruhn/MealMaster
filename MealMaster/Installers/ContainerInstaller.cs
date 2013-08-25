@@ -5,6 +5,7 @@ using Castle.MicroKernel.SubSystems.Configuration;
 using Castle.Windsor;
 using MealMaster.Core;
 using MealMaster.Core.Interfaces;
+using MealMaster.Factories;
 using MealMaster.Infrastructure.Mongo;
 
 namespace MealMaster.Installers
@@ -15,6 +16,7 @@ namespace MealMaster.Installers
         {
             container.Register(Component.For<IIngredientManager>().ImplementedBy<IngredientManager>());
             container.Register(Component.For<IIngredientService>().ImplementedBy<IngredientService>());
+            container.Register(Component.For<IIngredientListFactory>().ImplementedBy<IngredientListFactory>());
 
             container.Register(Classes.FromThisAssembly().BasedOn<IController>().LifestyleTransient());
             container.Register(Classes.FromThisAssembly().BasedOn<IHttpController>().LifestyleTransient());

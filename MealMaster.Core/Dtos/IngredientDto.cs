@@ -2,7 +2,7 @@
 {
     public class IngredientDto
     {
-        public int IngredientId { get; set; }
+        public string IngredientId { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
         public decimal EnergyInKcal { get; set; }

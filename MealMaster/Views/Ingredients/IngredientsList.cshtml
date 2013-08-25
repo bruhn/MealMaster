@@ -1,7 +1,65 @@
-﻿@{
+﻿@model MealMaster.Models.IngredientListModel
+@{
     ViewBag.Title = "Ingredients";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <h2>Ingredienser</h2>
 <input type="button" onclick="location.href='CreateEditIngredient'" value="Opret ingrediens" class="x-submit"/>
+
+<div class="x-table">
+<table>
+
+        <tr>
+            <td>
+                Navn
+            </td>
+            <td>
+                Beskrivelse
+            </td>
+            <td>
+                Energi (kcal/100g)
+            </td>
+            <td>
+                Kulhydrat (kcal/100g)
+            </td>
+            <td>
+                Fedt (kcal/100g)
+            </td>
+            <td>
+                Protein(kcal/100g)
+            </td>
+            <td>
+                Alkohol(kcal/100mL)
+            </td>
+        </tr>
+
+    
+    @foreach (var ingredient in Model.Ingredients)
+    {
+        <tr onclick="location.href='CreateEditIngredient'" class="x-row-hover">
+            <td>
+                @ingredient.Name
+            </td>
+            <td>
+                @ingredient.Description
+            </td>
+            <td>
+                @ingredient.EnergyInKcal
+            </td>
+            <td>
+                @ingredient.CarbonHydrateWeightPercent
+            </td>
+            <td>
+                @ingredient.FatWeightPercent
+            </td>
+            <td>
+                @ingredient.ProteineWeightPercent
+            </td>
+            <td>
+                @ingredient.AlcoholVolumePercent
+            </td>
+        </tr>
+    }
+</table>
+</div>

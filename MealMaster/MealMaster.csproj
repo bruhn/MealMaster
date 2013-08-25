@@ -199,14 +199,17 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\IngredientsController.cs" />
     <Compile Include="Controllers\RecipesController.cs" />
+    <Compile Include="Factories\IngredientListFactory.cs" />
     <Compile Include="Factories\WindsorControllerFactory.cs" />
     <Compile Include="Factories\WindsorHttpControllerFactory.cs" />
     <Compile Include="Filters\InitializeSimpleMembershipAttribute.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="IIngredientListFactory.cs" />
     <Compile Include="Installers\ContainerInstaller.cs" />
     <Compile Include="Models\AccountModels.cs" />
+    <Compile Include="Models\IngredientListModel.cs" />
     <Compile Include="Models\IngredientModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
