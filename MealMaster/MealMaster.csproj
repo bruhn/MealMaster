@@ -332,6 +332,7 @@
     <Content Include="Views\Recipes\RecipesList.cshtml" />
     <Content Include="Views\Ingredients\IngredientsList.cshtml" />
     <Content Include="Views\Ingredients\CreateEditIngredient.cshtml" />
+    <Content Include="Views\Ingredients\EditIngredient.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

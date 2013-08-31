@@ -5,7 +5,6 @@ namespace MealMaster.Model.Entities
     public class Ingredient
     {
         public ObjectId _id { get; set; }
-        public ObjectId IngredientId { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
         public decimal EnergyInKcal { get; set; }

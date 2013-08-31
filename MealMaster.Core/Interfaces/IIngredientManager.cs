@@ -5,7 +5,8 @@ namespace MealMaster.Core.Interfaces
 {
     public interface IIngredientManager
     {
-        void CreateIngredient(IngredientDto ingredient);
+        void UpsertIngredient(IngredientDto ingredient);
         List<IngredientDto> GetAllIngredients();
+        IngredientDto GetIngredientById(string id);
     }
 }

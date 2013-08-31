@@ -1,0 +1,54 @@
+﻿@model MealMaster.Models.IngredientModel
+
+@{
+    ViewBag.Title = "EditIngredient";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Redigér ingrediens</h2>
+
+<form action="EditIngredient.cshtml">
+
+    <div class="x-container">
+        <div class="x-formrow">
+            <label>Id:</label>
+            <input name="IngredientId" type="text" class="x-text-box" value="@Model.IngredientId" readonly="readonly"/>
+        </div>
+        <div class="x-formrow">
+            <label>Navn:</label>
+            <input name="Name" type="text" class="x-text-box" value="@Model.Name"/>
+        </div>
+        <div class="x-formrow">
+            <label>Beskrivelse:</label>
+            <textarea name="Description" class="x-text-area">@Model.Description</textarea>
+        </div>
+        <div class="x-formrow">
+            <label>Energiindhold:</label>
+            <input name="EnergyInKcal" type="text" class="x-text-box" value="@Model.EnergyInKcal"/>
+            kcal
+        </div>
+        <div class="x-formrow">
+            <label>Kulhydrat:</label>
+            <input name="CarbonHydrateWeightPercent" type="text" class="x-text-box" value="@Model.CarbonHydrateWeightPercent"/>
+            %
+        </div>
+        <div class="x-formrow">
+            <label>Fedt:</label>
+            <input name="FatWeightPercent" type="text" class="x-text-box" value="@Model.FatWeightPercent"/>
+            %
+        </div>
+        <div class="x-formrow">
+            <label>Protein:</label>
+            <input name="ProteineWeightPercent" type="text" class="x-text-box" value="@Model.ProteineWeightPercent"/>
+            %
+        </div>
+        <div class="x-formrow">
+            <label>Alkohol:</label>
+            <input name="AlcoholVolumePercent" type="text" class="x-text-box" value="@Model.AlcoholVolumePercent"/>
+            %
+        </div>
+        <div>
+            <input type="submit" formaction="SaveIngredient" value="Gem ingrediens" class="x-submit"/>
+        </div>
+    </div>
+</form>

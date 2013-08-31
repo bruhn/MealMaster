@@ -32,10 +32,13 @@ namespace MealMaster.Controllers
             return View();
         }
 
-        public ActionResult CreateIngredient(IngredientModel ingredient)
+        public ActionResult OpenEditIngredient(string id)
         {
-            var ingredientDto = new IngredientDto
+            var ingredient = _ingredientService.GetIngredientById(id);
+
+            var ingredientModel = new IngredientModel
             {
+                IngredientId = ingredient.IngredientId,
                 Name = ingredient.Name,
                 Description = ingredient.Description,
                 CarbonHydrateWeightPercent = ingredient.CarbonHydrateWeightPercent,
@@ -45,7 +48,24 @@ namespace MealMaster.Controllers
                 AlcoholVolumePercent = ingredient.AlcoholVolumePercent
             };
 
-            _ingredientService.CreateIngredient(ingredientDto);
+            return View("EditIngredient", ingredientModel);
+        }
+
+        public ActionResult SaveIngredient(IngredientModel ingredient)
+        {
+            var ingredientDto = new IngredientDto
+            {
+                IngredientId = ingredient.IngredientId,
+                Name = ingredient.Name,
+                Description = ingredient.Description,
+                CarbonHydrateWeightPercent = ingredient.CarbonHydrateWeightPercent,
+                EnergyInKcal = ingredient.EnergyInKcal,
+                FatWeightPercent = ingredient.FatWeightPercent,
+                ProteineWeightPercent = ingredient.ProteineWeightPercent,
+                AlcoholVolumePercent = ingredient.AlcoholVolumePercent
+            };
+
+            _ingredientService.SaveIngredient(ingredientDto);
 
             var ingredientList = _ingredientListFactory.CreateIngredientListModel();
 

@@ -13,14 +13,19 @@ namespace MealMaster.Core
             _ingredientManager = ingredientManager;
         }
 
-        public void CreateIngredient(IngredientDto ingredient)
+        public void SaveIngredient(IngredientDto ingredient)
         {
-            _ingredientManager.CreateIngredient(ingredient);
+            _ingredientManager.UpsertIngredient(ingredient);
         }
 
         public List<IngredientDto> GetAllIngredients()
         {
             return _ingredientManager.GetAllIngredients();
+        }
+
+        public IngredientDto GetIngredientById(string id)
+        {
+            return _ingredientManager.GetIngredientById(id);
         }
     }
 }

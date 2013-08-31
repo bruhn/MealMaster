@@ -4,19 +4,34 @@ using System.Globalization;
 using MealMaster.Core.Dtos;
 using MealMaster.Core.Interfaces;
 using MealMaster.Model.Entities;
+using MongoDB.Bson;
+using MongoDB.Bson.Serialization.IdGenerators;
+using MongoDB.Driver;
+using MongoDB.Driver.Builders;
 
 namespace MealMaster.Infrastructure.Mongo
 {
     public class IngredientManager : MongoManager, IIngredientManager
     {
-        public void CreateIngredient(IngredientDto ingredient)
+        private readonly MongoCollection _collection;
+
+        public IngredientManager()
+        {
+            _collection = Database.GetCollection<Ingredient>("ingredients");
+        }
+
+        public void UpsertIngredient(IngredientDto ingredient)
         {
             try
             {
-                var collection = Database.GetCollection<Ingredient>("ingredients");
+                if (ingredient.IngredientId == null)
+                {
+                    ingredient.IngredientId = "000000000000000000000000";
+                }
 
                 var ingredientEntity = new Ingredient
                 {
+                    _id = new ObjectId(ingredient.IngredientId),
                     Name = ingredient.Name,
                     Description = ingredient.Description,
                     CarbonHydrateWeightPercent = ingredient.CarbonHydrateWeightPercent,
@@ -27,7 +42,7 @@ namespace MealMaster.Infrastructure.Mongo
                 };
 
 
-                collection.Insert(ingredientEntity);
+                _collection.Save(ingredientEntity);
             }
             catch (Exception e)
             {
@@ -37,9 +52,7 @@ namespace MealMaster.Infrastructure.Mongo
 
         public List<IngredientDto> GetAllIngredients()
         {
-            var collection = Database.GetCollection<Ingredient>("ingredients");
-
-            var ingredients = collection.FindAll();
+            var ingredients = _collection.FindAllAs<Ingredient>();
 
             var ingredientDtos = new List<IngredientDto>();
 
@@ -61,6 +74,30 @@ namespace MealMaster.Infrastructure.Mongo
             }
 
             return ingredientDtos;
+        }
+
+        public IngredientDto GetIngredientById(string id)
+        {
+            var oid = new ObjectId(id);
+
+            var query = Query.EQ("_id", oid);
+
+
+            var ingredient = _collection.FindOneAs<Ingredient>(query);
+
+            var ingredientDto = new IngredientDto
+            {
+                IngredientId = ingredient._id.ToString(),
+                Name = ingredient.Name,
+                Description = ingredient.Description,
+                CarbonHydrateWeightPercent = ingredient.CarbonHydrateWeightPercent,
+                EnergyInKcal = ingredient.EnergyInKcal,
+                FatWeightPercent = ingredient.FatWeightPercent,
+                ProteineWeightPercent = ingredient.ProteineWeightPercent,
+                AlcoholVolumePercent = ingredient.AlcoholVolumePercent
+            };
+
+            return ingredientDto;
         }
     }
 }

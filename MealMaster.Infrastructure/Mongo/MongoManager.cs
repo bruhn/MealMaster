@@ -11,7 +11,7 @@ namespace MealMaster.Infrastructure.Mongo
             _client = new MongoClient("mongodb://mealmasteruser:Meal4Free@ds041758.mongolab.com:41758/mealmaster");
         }
 
-        public MongoDatabase Database
+        protected MongoDatabase Database
         {
             get
             {
