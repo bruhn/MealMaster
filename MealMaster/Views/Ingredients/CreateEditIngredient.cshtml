@@ -12,40 +12,42 @@
 <form action="CreateEditIngredient.cshtml">
   <div class="x-container">
     <div class="x-formrow">
-        <label>Navn:</label>
-        <input name="Name" type="text" class="x-text-box"/>
+        @Html.LabelFor(model => model.Name)
+        @Html.EditorFor(model => model.Name)
+        @Html.ValidationMessageFor(model => model.Name)
+        
+    </div>
+      <div class="x-formrow">
+        @Html.LabelFor(model => model.Description)
+        @Html.TextAreaFor(model => model.Description)
+        @Html.ValidationMessageFor(model => model.Description)
+      </div>
+    <div class="x-formrow">
+        @Html.LabelFor(model => model.EnergyInKcal)
+        @Html.EditorFor(model => model.EnergyInKcal)
+        @Html.ValidationMessageFor(model => model.EnergyInKcal)
     </div>
     <div class="x-formrow">
-        <label>Beskrivelse:</label>
-        <textarea name="Description" class="x-text-area"></textarea>
+        @Html.LabelFor(model => model.ProteineWeightPercent)
+        @Html.EditorFor(model => model.ProteineWeightPercent)
+        @Html.ValidationMessageFor(model => model.ProteineWeightPercent)
     </div>
     <div class="x-formrow">
-        <label>Energiindhold:</label>
-        <input name="EnergyInKcal" type="text" class="x-text-box"/>
-        kcal/100g
+        @Html.LabelFor(model => model.CarbonHydrateWeightPercent)
+        @Html.EditorFor(model => model.CarbonHydrateWeightPercent)
+        @Html.ValidationMessageFor(model => model.CarbonHydrateWeightPercent)
     </div>
     <div class="x-formrow">
-        <label>Kulhydrat:</label>
-        <input name="CarbonHydrateWeightPercent" type="text" class="x-text-box"/>
-        g/100g
+        @Html.LabelFor(model => model.FatWeightPercent)
+        @Html.EditorFor(model => model.FatWeightPercent)        
+        @Html.ValidationMessageFor(model => model.FatWeightPercent)
     </div>
     <div class="x-formrow">
-        <label>Fedt:</label>
-        <input name="FatWeightPercent" type="text" class="x-text-box"/>
-                g/100g
-    </div>
-    <div class="x-formrow">
-        <label>Protein:</label>
-        <input name="ProteineWeightPercent" type="text" class="x-text-box"/>
-                g/100g
-    </div>
-    <div class="x-formrow">
-        <label>Alkohol:</label>
-        <input name="AlcoholVolumePercent" type="text" class="x-text-box"/>
-        Volumen %
+        @Html.LabelFor(model => model.AlcoholVolumePercent)
+        @Html.EditorFor(model => model.AlcoholVolumePercent)     
     </div>
     <div>
-        <input type="submit" formaction="SaveIngredient" value="Gem ingrediens" class="x-submit"/>
+        <input type="submit" formaction="SaveIngredient" value="Gem ingrediens"/>
     </div>
   </div>
 </form>

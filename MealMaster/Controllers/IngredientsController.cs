@@ -53,23 +53,26 @@ namespace MealMaster.Controllers
 
         public ActionResult SaveIngredient(IngredientModel ingredient)
         {
-            var ingredientDto = new IngredientDto
+            if (ModelState.IsValid)
             {
-                IngredientId = ingredient.IngredientId,
-                Name = ingredient.Name,
-                Description = ingredient.Description,
-                CarbonHydrateWeightPercent = ingredient.CarbonHydrateWeightPercent,
-                EnergyInKcal = ingredient.EnergyInKcal,
-                FatWeightPercent = ingredient.FatWeightPercent,
-                ProteineWeightPercent = ingredient.ProteineWeightPercent,
-                AlcoholVolumePercent = ingredient.AlcoholVolumePercent
-            };
+                var ingredientDto = new IngredientDto
+                {
+                    IngredientId = ingredient.IngredientId,
+                    Name = ingredient.Name,
+                    Description = ingredient.Description,
+                    CarbonHydrateWeightPercent = ingredient.CarbonHydrateWeightPercent,
+                    EnergyInKcal = ingredient.EnergyInKcal,
+                    FatWeightPercent = ingredient.FatWeightPercent,
+                    ProteineWeightPercent = ingredient.ProteineWeightPercent,
+                    AlcoholVolumePercent = ingredient.AlcoholVolumePercent
+                };
 
-            _ingredientService.SaveIngredient(ingredientDto);
+                _ingredientService.SaveIngredient(ingredientDto);
 
-            var ingredientList = _ingredientListFactory.CreateIngredientListModel();
+                RedirectToAction("IngredientsList", "Ingredients");
+            }
 
-            return View("IngredientsList", ingredientList);
+            return View("CreateEditIngredient", ingredient);
         }
     }
 }

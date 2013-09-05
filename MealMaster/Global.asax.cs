@@ -25,7 +25,7 @@ namespace MealMaster
             BundleConfig.RegisterBundles(BundleTable.Bundles);
             AuthConfig.RegisterAuth();
             WindsorControllerConfig.BootstrapContainer();
-            ModelBinders.Binders.DefaultBinder = new CustomModelBinder();
+            //ModelBinders.Binders.DefaultBinder = new CustomModelBinder();
             //BootstrapSupport.BootstrapBundleConfig.RegisterBundles(System.Web.Optimization.BundleTable.Bundles);
             //BootstrapMvcSample.ExampleLayoutsRouteConfig.RegisterRoutes(RouteTable.Routes);
         }
@@ -33,6 +33,11 @@ namespace MealMaster
         protected void Application_End()
         {
             WindsorControllerConfig.DisposeContainer();
+        }
+
+        protected void Application_Error(object sender, EventArgs e)
+        {
+            Exception ex = Server.GetLastError();
         }
     }
 }

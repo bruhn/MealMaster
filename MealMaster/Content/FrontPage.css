@@ -153,7 +153,16 @@
 
 
 /*Forms*/
-.x-text-box {
+/*.x-text-box {
+	border:2px solid #000000;
+	border-radius:14px;
+	height: 30px;
+	width: 300px;
+    margin-bottom: 20px;
+    padding-left: 5px;
+}*/
+
+.x-formrow input {
 	border:2px solid #000000;
 	border-radius:14px;
 	height: 30px;
@@ -173,7 +182,7 @@ input[readonly="readonly"]{
 }
 
 
-.x-text-area {
+.x-formrow textarea {
 	border:2px solid #000000;
 	border-radius:14px;
 	height: 100px;
@@ -188,14 +197,13 @@ input[readonly="readonly"]{
 	border-radius:14px;
     margin-bottom: 20px;
     padding: 30px;
-    width: 550px;
+    width: 700px;
 }
 
 div.x-formrow {float:left;width:100%;}
 div.x-formrow label {float:left;display:block;width:10em;font-weight:bold;}
 
-/*Form button*/
-.x-submit {
+.x-container input[type=submit]{
   font-family: helvetica;
    font-weight: bold;
   color: #FFFFFF !important;
@@ -214,13 +222,17 @@ div.x-formrow label {float:left;display:block;width:10em;font-weight:bold;}
   background: -moz-linear-gradient(top,  #004711,  #C5FF05);
     margin-bottom: 10px;
 }
-.x-submit:hover {
+.x-container input[type=submit]:hover {
   color: #000000 !important;
   background: #FFFFFF;
   background: linear-gradient(top,  #FFFFFF,  #C5FF05);
   background: -ms-linear-gradient(top,  #FFFFFF,  #C5FF05);
   background: -webkit-gradient(linear, left top, left bottom, from(#FFFFFF), to(#C5FF05));
   background: -moz-linear-gradient(top,  #FFFFFF,  #C5FF05);
+}
+
+.field-validation-error {
+    color:red
 }
 
 /*Table*/
