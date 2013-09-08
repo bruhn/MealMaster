@@ -1,37 +1,47 @@
-﻿<!DOCTYPE html>
+﻿@using System.Configuration
+<!DOCTYPE html>
 <html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>@ViewBag.Title</title>
-    @Styles.Render("~/Content/bootstrap/bootstrap.min.css")
-    @Styles.Render("~/Content/bootstrap/bootstrap-theme.min.css")
-    @Styles.Render("~/Content/FrontPage.css")
-</head>
-<body>
-    <div>
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-3">
-                    <div class="page-header">
-                        <h1>Mealz</h1>
-                        <h6>Take control of you daily diet</h6>
+    <head>
+        <meta name="viewport" content="width=device-width" />
+        <title>@ViewBag.Title</title>
+        @Styles.Render("~/Content/bootstrap/bootstrap.min.css")
+        @Styles.Render("~/Content/bootstrap/bootstrap-theme.min.css")
+        @Styles.Render("~/Content/FrontPage.css")
+    </head>
+
+    <body>
+    <header>
+        
+    </header>
+        <div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-3">
+                        <div class="page-header">
+                            <h1>Mealz</h1>
+                            <h6>Take control of you daily diet</h6>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <ul id="menu-bar">
+                        <li><a href="@Url.Action("RecipesList", "Recipes")">Opskrifter</a></li>
+                        <li><a href="@Url.Action("IngredientsList", "Ingredients")">Ingredienser</a></li>
+                        <li><a href="#">Kontakt</a></li>
+                    </ul>
+                    <div class="col-lg-10">
+                        <div>@RenderSection("featured", required: false)</div>
+
+                        <div>@RenderBody()</div>
                     </div>
                 </div>
             </div>
-            <div class="row">
-                <ul id="menu-bar">
-                    <li><a href="@Url.Action("RecipesList", "Recipes")">Opskrifter</a></li>
-                    <li><a href="@Url.Action("IngredientsList", "Ingredients")">Ingredienser</a></li>
-                    <li><a href="#">Kontakt</a></li>
-                </ul>
-                <div class="col-lg-10">
-                    <div>@RenderSection("featured", required: false)</div>
-
-                    <div>@RenderBody()</div>
-                </div>
-            </div>
         </div>
-    </div>
-@Scripts.Render("~/Scripts/bootstrap.min.js")
-</body>
+
+        <footer>
+            Mealmaster by J.Bruhn
+            @ConfigurationManager.AppSettings["version"]
+        </footer>
+        @Scripts.Render("~/Scripts/bootstrap.min.js")
+    </body>
 </html>

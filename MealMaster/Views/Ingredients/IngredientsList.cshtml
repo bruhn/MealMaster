@@ -5,10 +5,10 @@
 }
 
 <h2>Ingredienser</h2>
-<input type="button" onclick="location.href='CreateEditIngredient'" value="Opret ingrediens" class="x-submit"/>
+<input type="button" onclick="location.href='CreateEditIngredient'" value="Opret ingrediens"/>
 
-<div class="x-table">
-<table>
+@*<div class="x-table">
+    <table>
 
         <tr>
             <td>
@@ -35,31 +35,93 @@
         </tr>
 
     
+        @foreach (var ingredient in Model.Ingredients)
+        {
+            <tr onclick="location.href='OpenEditIngredient?id=@ingredient.IngredientId'" class="x-row-hover">
+                <td>
+                    <div>
+                        @ingredient.Name
+                    </div>
+                </td>
+                <td>
+                    <div>
+                        @ingredient.Description</div>
+                </td>
+                <td>
+                    <div>
+                        @ingredient.EnergyInKcal</div>
+                </td>
+                <td><div>
+                        @ingredient.CarbonHydrateWeightPercent</div>
+                </td>
+                <td><div>
+                        @ingredient.FatWeightPercent</div>
+                </td>
+                <td><div>
+                        @ingredient.ProteineWeightPercent</div>
+                </td>
+                <td><div>
+                        @ingredient.AlcoholVolumePercent</div>
+                </td>
+            </tr>
+        }
+    </table>
+</div>*@
+
+<div class="x-div-table">
+
+@*        <div class="x-header">
+            <div>
+                Navn
+            </div>
+            <div>
+                Beskrivelse
+            </div>
+            <div>
+                Energi (kcal/100g)
+           </div>
+            <div>
+                Kulhydrat (kcal/100g)
+            </div>
+            <div>
+                Fedt (kcal/100g)
+            </div>
+            <div>
+                Protein(kcal/100g)
+            </div>
+            <div>
+                Alkohol(Volumen %)
+           </div>
+        </div>*@
+
+    
     @foreach (var ingredient in Model.Ingredients)
     {
-        <tr onclick="location.href='OpenEditIngredient?id=@ingredient.IngredientId'" class="x-row-hover">
-            <td>
-                @ingredient.Name
-            </td>
-            <td>
-                @ingredient.Description
-            </td>
-            <td>
-                @ingredient.EnergyInKcal
-            </td>
-            <td>
-                @ingredient.CarbonHydrateWeightPercent
-            </td>
-            <td>
-                @ingredient.FatWeightPercent
-            </td>
-            <td>
-                @ingredient.ProteineWeightPercent
-            </td>
-            <td>
-                @ingredient.AlcoholVolumePercent
-            </td>
-        </tr>
+        @*<div onclick="location.href='OpenEditIngredient?id=@ingredient.IngredientId'" class="x-row">*@
+           
+        <p>
+            <span class="x-col1">@ingredient.Name</span>
+           
+           
+            <span class="x-col2">
+                @ingredient.Description</span>
+            
+           
+                <span class="x-col3">
+                @ingredient.EnergyInKcal</span>
+           
+           <span class="x-col4">
+                @ingredient.CarbonHydrateWeightPercent</span>
+            
+           <span class="x-col5">
+                @ingredient.FatWeightPercent</span>
+          
+           <span class="x-col6">
+                @ingredient.ProteineWeightPercent</span>
+          
+            <span class="x-col7">
+                @ingredient.AlcoholVolumePercent</span>
+            </p>
+     
     }
-</table>
 </div>

@@ -69,7 +69,7 @@ namespace MealMaster.Controllers
 
                 _ingredientService.SaveIngredient(ingredientDto);
 
-                RedirectToAction("IngredientsList", "Ingredients");
+                return RedirectToAction("IngredientsList", "Ingredients");
             }
 
             return View("CreateEditIngredient", ingredient);
