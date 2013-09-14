@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Globalization;
+using System.Linq;
 using MealMaster.Core.Dtos;
 using MealMaster.Core.Interfaces;
 using MealMaster.Model.Entities;
@@ -8,6 +9,7 @@ using MongoDB.Bson;
 using MongoDB.Bson.Serialization.IdGenerators;
 using MongoDB.Driver;
 using MongoDB.Driver.Builders;
+using MongoDB.Driver.Linq;
 
 namespace MealMaster.Infrastructure.Mongo
 {
@@ -53,6 +55,34 @@ namespace MealMaster.Infrastructure.Mongo
         public List<IngredientDto> GetAllIngredients()
         {
             var ingredients = _collection.FindAllAs<Ingredient>();
+
+            var ingredientDtos = new List<IngredientDto>();
+
+            foreach (var ingredient in ingredients)
+            {
+                var ingredientDto = new IngredientDto
+                {
+                    IngredientId = ingredient._id.ToString(),
+                    Name = ingredient.Name,
+                    Description = ingredient.Description,
+                    CarbonHydrateWeightPercent = ingredient.CarbonHydrateWeightPercent,
+                    EnergyInKcal = ingredient.EnergyInKcal,
+                    FatWeightPercent = ingredient.FatWeightPercent,
+                    ProteineWeightPercent = ingredient.ProteineWeightPercent,
+                    AlcoholVolumePercent = ingredient.AlcoholVolumePercent
+                };
+
+                ingredientDtos.Add(ingredientDto);
+            }
+
+            return ingredientDtos;
+        }
+
+        public List<IngredientDto> GetIngredients(int count, int skipIndex)
+        {
+            var ingredients = _collection.AsQueryable<Ingredient>();
+
+            ingredients = ingredients.Skip(skipIndex * count).Take(count);
 
             var ingredientDtos = new List<IngredientDto>();
 

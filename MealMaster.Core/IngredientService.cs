@@ -23,6 +23,11 @@ namespace MealMaster.Core
             return _ingredientManager.GetAllIngredients();
         }
 
+        public List<IngredientDto> GetIngredients(int count, int skipIndex)
+        {
+            return _ingredientManager.GetIngredients(count, skipIndex);
+        }
+
         public IngredientDto GetIngredientById(string id)
         {
             return _ingredientManager.GetIngredientById(id);

@@ -4,6 +4,6 @@ namespace MealMaster
 {
     public interface IIngredientListFactory
     {
-        IngredientListModel CreateIngredientListModel();
+        IngredientListModel CreateIngredientListModel(int count, int skipIndex);
     }
 }

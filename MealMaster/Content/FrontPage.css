@@ -1,7 +1,7 @@
 ﻿
 /*Top Menu bar*/
 #menu-bar {
-  width: 95%;
+  width: 100%;
   margin: 0px 0px 0px 0px;
   padding: 5px 6px 10px 6px;
   height: 40px;
@@ -153,15 +153,6 @@
 
 
 /*Forms*/
-/*.x-text-box {
-	border:2px solid #000000;
-	border-radius:14px;
-	height: 30px;
-	width: 300px;
-    margin-bottom: 20px;
-    padding-left: 5px;
-}*/
-
 .x-formrow input {
 	border:2px solid #000000;
 	border-radius:14px;
@@ -305,7 +296,7 @@ input[type=submit]:hover, input[type=button]:hover {
 /*Div Table*/
 .x-div-table {
 	margin:0px;padding:0px;
-    width: 900px;
+    width: 1050px;
     table-layout: fixed;
 	box-shadow: 10px 10px 5px #888888;
 	border:1px solid #000000;
@@ -320,39 +311,33 @@ input[type=submit]:hover, input[type=button]:hover {
 		}
 
     .x-div-table span {
-            		float: left;
+           display: table-cell;
+    
 		padding: 0 10px;
 		border-left: 1px solid #e3e7e7;
 		border-bottom: 1px solid #e3e7e7;
-            overflow: hidden;
-        white-space: nowrap;
+        overflow: hidden;
+        white-space:normal;
+        height: 40px;
+        word-break: break-all;
+        vertical-align: middle;
     }
 
-.x-div-table span.x-col1 {
+.x-div-table span.x-title-col {
+    width: 270px;
+    font-weight: bold;
+}
+
+.x-div-table span.x-desc-col {
     width: 270px;
 }
 
-.x-div-table span.x-col2 {
-    width: 270px;
+.x-div-table span.x-value-col {
+    width: 100px;
 }
 
-.x-div-table span.x-col3 {
-    width: 70px;
-}
-.x-div-table span.x-col4 {
-    width: 70px;
-}
-.x-div-table span.x-col5 {
-    width: 70px;
-}
-.x-div-table span.x-col6 {
-    width: 70px;
-}
-.x-div-table span.x-col7 {
-    width: 70px;
-}
 
-.x-div-table header{
+.x-div-table p.x-header{
 		background:-o-linear-gradient(bottom, #ffffff 5%, #c5ff05 100%);	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #ffffff), color-stop(1, #c5ff05) );
 	background:-moz-linear-gradient( center top, #ffffff 5%, #c5ff05 100% );
 	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr="#ffffff", endColorstr="#c5ff05");	background: -o-linear-gradient(top,#ffffff,c5ff05);

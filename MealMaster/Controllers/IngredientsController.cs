@@ -20,12 +20,26 @@ namespace MealMaster.Controllers
             _ingredientListFactory = ingredientListFactory;
         }
 
-        public ActionResult IngredientsList()
+        public ActionResult IngredientsList(string pageNo)
         {
-            var ingredientList = _ingredientListFactory.CreateIngredientListModel();
+            var parsedPageNo = 0;
+
+            if (pageNo != null)
+            {
+                parsedPageNo = int.Parse(pageNo);
+            }
+
+            var ingredientList = _ingredientListFactory.CreateIngredientListModel(10, parsedPageNo);
             
             return View(ingredientList);
         }
+
+        //public ActionResult IngredientsList(int pageNo)
+        //{
+        //    var ingredientsList = _ingredientListFactory.CreateIngredientListModel(10, pageNo);
+
+        //    return View(ingredientsList);
+        //}
 
         public ActionResult CreateEditIngredient()
         {

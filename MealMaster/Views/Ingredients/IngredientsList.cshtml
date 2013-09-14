@@ -69,59 +69,28 @@
 </div>*@
 
 <div class="x-div-table">
+    <p class="x-header">
+        <span class="x-title-col"> Navn</span>
+        <span class="x-desc-col">  Beskrivelse</span>
+        <span class="x-value-col"> Energi <br/>(kcal/100g)</span>
+        <span class="x-value-col"> Kulhydrat <br/>(kcal/100g)</span>
+        <span class="x-value-col"> Fedt <br/>(kcal/100g)</span>
+        <span class="x-value-col"> Protein <br/>(kcal/100g)</span>
+        <span class="x-value-col"> Alkohol <br/>(Vol. %)</span>
+    </p>
 
-@*        <div class="x-header">
-            <div>
-                Navn
-            </div>
-            <div>
-                Beskrivelse
-            </div>
-            <div>
-                Energi (kcal/100g)
-           </div>
-            <div>
-                Kulhydrat (kcal/100g)
-            </div>
-            <div>
-                Fedt (kcal/100g)
-            </div>
-            <div>
-                Protein(kcal/100g)
-            </div>
-            <div>
-                Alkohol(Volumen %)
-           </div>
-        </div>*@
-
-    
     @foreach (var ingredient in Model.Ingredients)
     {
-        @*<div onclick="location.href='OpenEditIngredient?id=@ingredient.IngredientId'" class="x-row">*@
-           
-        <p>
-            <span class="x-col1">@ingredient.Name</span>
-           
-           
-            <span class="x-col2">
-                @ingredient.Description</span>
-            
-           
-                <span class="x-col3">
-                @ingredient.EnergyInKcal</span>
-           
-           <span class="x-col4">
-                @ingredient.CarbonHydrateWeightPercent</span>
-            
-           <span class="x-col5">
-                @ingredient.FatWeightPercent</span>
-          
-           <span class="x-col6">
-                @ingredient.ProteineWeightPercent</span>
-          
-            <span class="x-col7">
-                @ingredient.AlcoholVolumePercent</span>
-            </p>
-     
+        <p onclick="location.href='OpenEditIngredient?id=@ingredient.IngredientId'">
+            <span class="x-title-col">@ingredient.Name</span>
+            <span class="x-desc-col">@ingredient.Description</span>
+            <span class="x-value-col">@ingredient.EnergyInKcal</span>
+            <span class="x-value-col">@ingredient.CarbonHydrateWeightPercent</span>
+            <span class="x-value-col">@ingredient.FatWeightPercent</span>
+            <span class="x-value-col">@ingredient.ProteineWeightPercent</span>
+            <span class="x-value-col">@ingredient.AlcoholVolumePercent</span>
+        </p>
     }
 </div>
+
+<input type="button" onclick="location.href='IngredientsList?pageNo=@Model.NextPageNo'" value="Næste side"/>

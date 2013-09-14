@@ -13,9 +13,9 @@ namespace MealMaster.Factories
             _ingredientService = ingredientService;
         }
 
-        public IngredientListModel CreateIngredientListModel()
+        public IngredientListModel CreateIngredientListModel(int count, int skipIndex)
         {
-            var ingredients = _ingredientService.GetAllIngredients();
+            var ingredients = _ingredientService.GetIngredients(count, skipIndex);
 
             var ingredientModels = new List<IngredientModel>();
 
@@ -36,6 +36,8 @@ namespace MealMaster.Factories
             }
 
             var ingredientListModel = new IngredientListModel {Ingredients = ingredientModels};
+
+            ingredientListModel.NextPageNo = skipIndex + 1;
 
             return ingredientListModel;
         }

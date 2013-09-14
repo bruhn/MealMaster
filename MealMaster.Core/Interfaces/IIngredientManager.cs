@@ -7,6 +7,7 @@ namespace MealMaster.Core.Interfaces
     {
         void UpsertIngredient(IngredientDto ingredient);
         List<IngredientDto> GetAllIngredients();
+        List<IngredientDto> GetIngredients(int count, int skipIndex);
         IngredientDto GetIngredientById(string id);
     }
 }
