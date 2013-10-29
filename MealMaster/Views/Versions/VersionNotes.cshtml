@@ -1,0 +1,16 @@
+﻿@model MealMaster.Models.Version[]
+@{
+    ViewBag.Title = "Versioner";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Versioner</h2>
+@foreach (var version in Model)
+{
+    <p>
+        @version.Number
+        ---
+        @version.Description
+
+    </p>
+}

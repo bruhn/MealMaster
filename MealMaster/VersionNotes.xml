@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<VersionCollection>
+  <Versions>
+    <Version>
+      <Number>0.01</Number>
+      <Description>Initial version, implementing basic architechture</Description>
+    </Version>  
+    <Version>
+      <Number>0.02</Number>
+      <Description>Addition of ingredient list</Description>
+    </Version> 
+    <Version>
+      <Number>0.03</Number>
+      <Description>Converting to tableless div tables</Description>
+    </Version> 
+    <Version>
+      <Number>0.04</Number>
+      <Description>Addition of version history</Description>
+    </Version> 
+  </Versions>
+</VersionCollection>
