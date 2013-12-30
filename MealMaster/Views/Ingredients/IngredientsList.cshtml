@@ -7,90 +7,25 @@
 <h2>Ingredienser</h2>
 <input type="button" onclick="location.href='CreateEditIngredient'" value="Opret ingrediens"/>
 
-@*<div class="x-table">
-    <table>
-
+<table class="table table-striped">
+    <thead>
         <tr>
-            <td>
-                Navn
-            </td>
-            <td>
-                Beskrivelse
-            </td>
-            <td>
-                Energi (kcal/100g)
-            </td>
-            <td>
-                Kulhydrat (kcal/100g)
-            </td>
-            <td>
-                Fedt (kcal/100g)
-            </td>
-            <td>
-                Protein(kcal/100g)
-            </td>
-            <td>
-                Alkohol(Volumen %)
-            </td>
+            <th>Navn</th>
+            <th>Beskrivelse</th>
+            <th>Energi</th>
         </tr>
-
-    
+    </thead>
+    <tbody>
         @foreach (var ingredient in Model.Ingredients)
         {
-            <tr onclick="location.href='OpenEditIngredient?id=@ingredient.IngredientId'" class="x-row-hover">
-                <td>
-                    <div>
-                        @ingredient.Name
-                    </div>
-                </td>
-                <td>
-                    <div>
-                        @ingredient.Description</div>
-                </td>
-                <td>
-                    <div>
-                        @ingredient.EnergyInKcal</div>
-                </td>
-                <td><div>
-                        @ingredient.CarbonHydrateWeightPercent</div>
-                </td>
-                <td><div>
-                        @ingredient.FatWeightPercent</div>
-                </td>
-                <td><div>
-                        @ingredient.ProteineWeightPercent</div>
-                </td>
-                <td><div>
-                        @ingredient.AlcoholVolumePercent</div>
-                </td>
+            <tr>
+                <td>@ingredient.Name</td>
+                <td>@ingredient.Description</td>
+                <td>@ingredient.EnergyInKcal</td>
             </tr>
         }
-    </table>
-</div>*@
-
-<div class="x-div-table">
-    <p class="x-header">
-        <span class="x-title-col"> Navn</span>
-        <span class="x-desc-col">  Beskrivelse</span>
-        <span class="x-value-col"> Energi <br/>(kcal/100g)</span>
-        <span class="x-value-col"> Kulhydrat <br/>(kcal/100g)</span>
-        <span class="x-value-col"> Fedt <br/>(kcal/100g)</span>
-        <span class="x-value-col"> Protein <br/>(kcal/100g)</span>
-        <span class="x-value-col"> Alkohol <br/>(Vol. %)</span>
-    </p>
-
-    @foreach (var ingredient in Model.Ingredients)
-    {
-        <p onclick="location.href='OpenEditIngredient?id=@ingredient.IngredientId'">
-            <span class="x-title-col">@ingredient.Name</span>
-            <span class="x-desc-col">@ingredient.Description</span>
-            <span class="x-value-col">@ingredient.EnergyInKcal</span>
-            <span class="x-value-col">@ingredient.CarbonHydrateWeightPercent</span>
-            <span class="x-value-col">@ingredient.FatWeightPercent</span>
-            <span class="x-value-col">@ingredient.ProteineWeightPercent</span>
-            <span class="x-value-col">@ingredient.AlcoholVolumePercent</span>
-        </p>
-    }
-</div>
+        <tr></tr>
+    </tbody>
+</table>
 
 @*<input type="button" onclick="location.href='IngredientsList?pageNo=@Model.NextPageNo'" value="Næste side"/>*@

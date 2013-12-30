@@ -16,6 +16,10 @@
     <Version>
       <Number>0.04</Number>
       <Description>Addition of version history</Description>
-    </Version> 
+    </Version>
+    <Version>
+      <Number>0.05</Number>
+      <Description>Twitter Bootstrapped!</Description>
+    </Version>
   </Versions>
 </VersionCollection>
